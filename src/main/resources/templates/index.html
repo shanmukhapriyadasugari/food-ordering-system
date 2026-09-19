@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteSprint | Premium Culinary Delivery Platform</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <!-- Professional Navigation Bar Header -->
+    <!-- Professional Navigation Bar Header -->
+    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 15px 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 100;">
+        <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+            <span style="font-size: 1.8rem; font-weight: 800; color: #e74c3c; font-family: 'Poppins', Arial, sans-serif;">Bite<span style="color: #2c3e50;">Sprint</span></span>
+            <a href="/admin" style="color: #718096; text-decoration: none; font-size: 0.9rem; font-weight: bold; border: 1px solid #cbd5e1; padding: 4px 10px; border-radius: 6px;">+ Add Custom Items</a>
+        </div>
+        <div class="nav-actions">
+            <!-- Dynamic Real-Time Cart Tracker Link -->
+            <a href="/cart" class="cart-status-btn" style="background: #e74c3c; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: Arial, sans-serif; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 6px rgba(231,76,60,0.2);">
+                <span>🛒 View Basket</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 20px; font-size: 0.9rem;" th:text="${cartCount}">0</span>
+                <span>$</span><span style="font-weight: bold;" th:text="${cartTotal}">0.00</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Dynamic Application Body Container -->
+    <main class="menu-section" style="padding: 50px 40px; max-width: 1200px; margin: 0 auto;">
+        <header style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.2rem; color: #2c3e50; font-family: Arial, sans-serif; margin-bottom: 10px;">Gourmet Cuisines Handcrafted for You</h2>
+            <p style="color: #7f8c8d; font-size: 1.1rem; margin: 0;">Select premium dishes managed seamlessly via our secure server execution architecture.</p>
+        </header>
+
+        <!-- Dynamic Responsive Card Layout Grid -->
+        <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; justify-content: center;">
+            
+            <!-- Dynamic Loop generating item modules straight from the Java model maps -->
+            <div class="food-card" th:each="item : ${menuItems}" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; padding: 0;">
+                <div class="img-wrapper" style="width: 100%; height: 200px; overflow: hidden; background: #f7fafc;">
+                    <img th:src="@{${item.imagePath}}" alt="Food Preview" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                
+                <div class="card-details" style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-size: 1.25rem; color: #2c3e50; margin: 0 0 8px 0; font-family: Arial, sans-serif;" th:text="${item.name}">Placeholder Food Name</h3>
+                        <span style="display: inline-block; background: #edf2f7; color: #4a5568; font-size: 0.75rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 15px;" th:text="${item.category}">Category</span>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <span style="font-size: 0.9rem; color: #a0aec0;">Standard Price</span>
+                            <span class="price-tag" style="font-size: 1.4rem; font-weight: 800; color: #2ecc71;" th:text="'$' + ${item.price}">$0.00</span>
+                        </div>
+                        
+                        <!-- State-Managed Submission Form Posting items into the Session Array -->
+                        <form th:action="@{/add-to-cart}" method="POST" style="margin: 0; padding: 0;">
+                            <input type="hidden" name="itemName" th:value="${item.name}">
+                            <button type="submit" style="background: #2c3e50; color: #ffffff; width: 100%; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: background 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">Add to Cart</button>
+                        </form>
+                        <!--  Hidden Delete Item Form Module -->
+                        <form th:action="@{/admin/delete-item}" method="POST" style="margin: 0; padding: 0; display: none !important;">
+                            <input type="hidden" name="itemId" th:value="${item.id}">
+                            <button type="submit" style="display: none !important; background: #e74c3c; color: #ffffff; width: 100%; border: none; padding: 12px; border-radius: 8px; font-weight: bold;">❌ Delete Item</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

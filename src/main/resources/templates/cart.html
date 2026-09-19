@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteSprint | Secure Basket Checkout</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body style="background: #f8fafc; padding: 50px 20px; font-family: Arial, sans-serif;">
+
+    <div style="max-width: 850px; margin: 0 auto; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #edf2f7; padding-bottom: 20px; margin-bottom: 30px;">
+            <h2 style="color: #2c3e50; margin: 0; font-size: 1.8rem;">Review Your Basket</h2>
+            <span style="font-size: 0.9rem; color: #718096; background: #edf2f7; padding: 6px 12px; border-radius: 20px; font-weight: bold;">BiteSprint Checkout</span>
+        </div>
+        
+        <!-- Cart Items List Grid -->
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="border-bottom: 2px solid #edf2f7; background: #f7fafc; color: #4a5568;">
+                    <th style="padding: 15px; font-size: 0.9rem; text-transform: uppercase;">Cuisine Selection</th>
+                    <th style="padding: 15px; font-size: 0.9rem; text-transform: uppercase;">Unit Price</th>
+                    <th style="padding: 15px; font-size: 0.9rem; text-transform: uppercase; text-align: center;">Item Count</th>
+                    <th style="padding: 15px; font-size: 0.9rem; text-transform: uppercase; text-align: right;">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Throws empty message if cart is empty -->
+                <tr th:if="${#lists.isEmpty(cartItems)}">
+                    <td colspan="4" style="text-align: center; padding: 40px; color: #a0aec0; font-style: italic;">Your basket is completely empty! Go add some delicacies.</td>
+                </tr>
+                <!-- Loop iteration mapping entries dynamically -->
+                <tr th:each="item : ${cartItems}" style="border-bottom: 1px solid #edf2f7; color: #2c3e50;">
+                    <td style="padding: 20px; font-weight: bold;" th:text="${item.menuItem.name}">Item Title</td>
+                    <td style="padding: 20px;" th:text="'$' + ${item.menuItem.price}">$0.00</td>
+                    <td style="padding: 20px; text-align: center;" th:text="${item.quantity}">1</td>
+                    <td style="padding: 20px; text-align: right; font-weight: 800; color: #2ecc71;" th:text="'$' + ${#numbers.formatDecimal(item.totalPrice, 1, 2)}">$0.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Summary Cost Invoicing Metrics Box -->
+        <div style="margin-top: 40px; width: 320px; margin-left: auto; background: #f7fafc; padding: 25px; border-radius: 8px; border: 1px solid #edf2f7;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; color: #4a5568; font-size: 0.95rem;">
+                <span>Items Subtotal:</span> 
+                <strong th:text="'$' + ${subTotal}">$0.00</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: #4a5568; font-size: 0.95rem;">
+                <span>Convenience & Delivery:</span> 
+                <strong th:text="'$' + ${deliveryFee}">$0.00</strong>
+            </div>
+            <hr style="border: 0; border-top: 2px dashed #edf2f7; margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; color: #2c3e50;">
+                <span style="font-weight: bold; font-size: 1.1rem;">Grand Total:</span> 
+                <span style="font-size: 1.6rem; font-weight: 900; color: #e74c3c;" th:text="'$' + ${grandTotal}">$0.00</span>
+            </div>
+        </div>
+
+        <!-- Flow Navigation Redirect Controls -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px; border-top: 2px solid #edf2f7; padding-top: 25px;">
+            <a href="/" style="color: #718096; text-decoration: none; font-weight: bold; font-size: 0.95rem; display: flex; align-items: center; gap: 5px;">⬅ Return to Menu</a>
+            <form th:action="@{/place-order}" method="POST" style="margin:0; padding:0;">
+            <button type="submit" style="background: #2ecc71; color: #ffffff; padding: 14px 35px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 6px rgba(46,204,113,0.2); font-family: Arial, sans-serif;">Place Order Securely</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

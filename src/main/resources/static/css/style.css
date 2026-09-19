@@ -1,0 +1,46 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fcfcfc;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+header {
+    text-align: center;
+    padding: 20px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 6px;
+}
+.card-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.food-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
+    width: 250px;
+}
+.price-tag {
+    font-weight: bold;
+    color: #27ae60;
+    font-size: 1.2em;
+}
+button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background: #c0392b;
+}

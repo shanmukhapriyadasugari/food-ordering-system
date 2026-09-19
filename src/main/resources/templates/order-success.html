@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmed Successfully</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- JavaScript popup triggered instantly upon successful landing -->
+    <script>
+        window.onload = function() {
+            alert("🎉 Success! Your order has been placed successfully and processed by the Java backend database runtime system.");
+        };
+    </script>
+</head>
+<body style="background: #f8fafc; padding: 60px 20px; font-family: Arial, sans-serif; text-align: center;">
+
+    <div style="max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+        <span style="font-size: 4rem;">📦</span>
+        <h1 style="color: #2ecc71; margin-top: 15px;">Order Placed Successfully!</h1>
+        <br><br>
+        <a href="/" style="background: #2c3e50; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold;">Return to Home Dashboard</a>
+    </div>
+
+</body>
+</html>
