@@ -59,3 +59,17 @@ foodorder
                 ├── success.html
                 ├── order-success.html
                 └── admin.html
+##⚙️ How to Run the Project
+
+### Prerequisites
+
+- Java JDK 21
+- Visual Studio Code
+- Java Extension Pack for VS Code
+
+### Steps
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/shanmukhapriyadasugari/food-ordering-system.git
