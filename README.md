@@ -104,7 +104,7 @@ Open a terminal and run:
 
 ```bash
 git clone https://github.com/shanmukhapriyadasugari/food-ordering-system.git
-
+```
 Step 2: Open the Project in Visual Studio Code
 
 Open the cloned food-ordering-system folder in Visual Studio Code.
@@ -112,8 +112,9 @@ Open the cloned food-ordering-system folder in Visual Studio Code.
 Step 3: Open the Main Application
 
 Navigate to:
+```bash
 src/main/java/com/example/foodorder/FoodorderApplication.java
-
+```
 Step 4: Run the Application
 Open FoodorderApplication.java in Visual Studio Code.
 Click the Run button to start the Spring Boot application.
@@ -121,9 +122,11 @@ Wait until the application starts successfully.
 
 Step 5: Open the Application in Browser
 Open a web browser and visit:
+```bash
 http://localhost:8080
-The Food Ordering System will now be available in the browser.
 ```
+The Food Ordering System will now be available in the browser.
+
 
 ## 🔄 Application Flow
 
