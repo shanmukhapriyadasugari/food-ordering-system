@@ -59,7 +59,7 @@ foodorder
                 ├── success.html
                 ├── order-success.html
                 └── admin.html
-      ```          
+```          
 
 ## 📸 Screenshots
 
