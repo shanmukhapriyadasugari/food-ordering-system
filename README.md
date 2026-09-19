@@ -144,19 +144,5 @@ Order Confirmation
 ## 🎯 Project Objective
 The main objective of this project is to develop a web-based food ordering application while gaining practical experience in backend development, frontend development, database integration, and Spring Boot application development.  
 
-## 🚀 Future Improvements
-The following features can be added in future versions:
-User registration and login
-User authentication and authorization
-Order history
-Online payment integration
-Improved admin dashboard
-Production database integration
-Cloud deployment
-Food search and filtering
-User reviews and ratings
-Improved mobile responsiveness
-
-
 ## 👩‍💻 Developed By:
 Shanmukha Priya Dasugari
