@@ -123,6 +123,7 @@ Step 5: Open the Application in Browser
 Open a web browser and visit:
 http://localhost:8080
 The Food Ordering System will now be available in the browser.
+```
 
 ## 🔄 Application Flow
 
